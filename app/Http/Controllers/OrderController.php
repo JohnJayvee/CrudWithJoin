@@ -122,18 +122,19 @@ class OrderController extends Controller
         $errors = Validator::make(
             $request->all(),
             [
-                'u_name' => 'required|string|max:255',
-                'u_address' => 'required|string|max:255',
+                'u_customer' => 'required',
+                'u_delivery_address' => 'required|string|max:255',
                 'u_phone_number' => 'required|string|max:255',
-                'u_email' => 'required|string|max:255|email',
+                'u_package_weight' => 'required|string|max:255',
+                'u_dimension' => 'required|string|max:255',
 
             ],
             [
-                'u_name.required' => 'Name field are required',
-                'u_address.required' => 'Address field are required',
-                'u_phone_number.required' => 'Phone Number field are required',
-                'u_email.required' => 'Email field are required',
-                'u_email.email' => 'Enter valid email address'
+                // 'u_name.required' => 'Name field are required',
+                // 'u_address.required' => 'Address field are required',
+                // 'u_phone_number.required' => 'Phone Number field are required',
+                // 'u_email.required' => 'Email field are required',
+                // 'u_email.email' => 'Enter valid email address'
 
             ]
         );
@@ -145,10 +146,10 @@ class OrderController extends Controller
 
         if (orderModel::where('id', $id)->exists()) {
             $customer = orderModel::find($id);
-            $customer->name = is_null($request->u_name) ? $customer->name : $request->u_name;
-            $customer->address = is_null($request->u_address) ? $customer->address : $request->u_address;
-            $customer->phone_number = is_null($request->u_phone_number) ? $customer->phone_number : $request->u_phone_number;
-            $customer->email = is_null($request->u_email) ? $customer->email : $request->u_email;
+            $customer->delivery_address = is_null($request->c_delivery_address) ? $customer->delivery_address : $request->c_delivery_address;
+            $customer->phone_number = is_null($request->c_phone_number) ? $customer->phone_number : $request->c_phone_number;
+            $customer->package_weight = is_null($request->c_package_weight) ? $customer->package_weight : $request->c_package_weight;
+            $customer->dimension = is_null($request->c_dimension) ? $customer->dimension : $request->c_dimension;
 
 
             $customer->save();

@@ -132,7 +132,8 @@
                 $('#UpdateModelHeading').html("Edit Order");
                 $('#updateBtn').val("edit-customer");
                 $('#UpdateAjaxModal').modal('show');
-                $('#u_customer').val(data.id);
+                $('#u_order_id').val(data.id);
+                $('#u_customer').val(data.customer_id);
                 $('#u_delivery_address').val(data.delivery_address);
                 $('#u_phone_number').val(data.phone_number);
                 $('#u_package_weight').val(data.package_weight);
@@ -146,7 +147,7 @@
         // Edit Save Function
         $('#u_customerForm').on('submit', function(event) {
             event.preventDefault();
-            var updateCustomerID = $('#u_customer_id').val();
+            var updateCustomerID = $('#u_order_id').val();
             var updateData = '{{ route('order.update', ':id') }}';
             updateUrl = updateData.replace(':id', updateCustomerID);
             $.ajax({
@@ -214,5 +215,4 @@
             }
         });
     });
-
 </script>
