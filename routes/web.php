@@ -159,64 +159,74 @@ Route::group([
 
 
 
-Route::group([
-    'as' => "customer.",
-    // 'middleware' => "auth"
-], function () {
+// Route::group([
+//     'as' => "customer.",
+//     'middleware' => "auth"
+// ], function () {
 
-    Route::get(
-        '/customers',
-        ['uses' => 'CustomerController@index', 'as' => 'index']
-    );
+//     Route::get(
+//         '/customers',
+//         ['uses' => 'CustomerController@index', 'as' => 'index']
+//     );
 
-    Route::get(
-        '/customer/edit/{id}',
-        ['uses' => 'CustomerController@edit', 'as' => 'edit']
-    );
+//     Route::get(
+//         '/customer/edit/{id}',
+//         ['uses' => 'CustomerController@edit', 'as' => 'edit']
+//     );
 
-    Route::post(
-        '/customer/store/',
-        ['uses' => 'CustomerController@store', 'as' => 'store']
-    );
+//     Route::post(
+//         '/customer/store/',
+//         ['uses' => 'CustomerController@store', 'as' => 'store']
+//     );
 
-    Route::PUT(
-        '/customer/update/{id}',
-        ['uses' => 'CustomerController@update', 'as' => 'update']
-    );
+//     Route::PUT(
+//         '/customer/update/{id}',
+//         ['uses' => 'CustomerController@update', 'as' => 'update']
+//     );
 
-    Route::delete(
-        '/customer/{id}',
-        ['uses' => 'CustomerController@destroy', 'as' => 'destroy']
-    );
+//     Route::delete(
+//         '/customer/{id}',
+//         ['uses' => 'CustomerController@destroy', 'as' => 'destroy']
+//     );
+// });
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('customer', 'CustomerController');
 });
 
-Route::group([
-    'as' => "order.",
-    // 'middleware' => "auth"
-], function () {
 
-    Route::get(
-        '/orders',
-        ['uses' => 'OrderController@index', 'as' => 'index']
-    );
+// Route::group([
+//     'as' => "order.",
+//     'middleware' => "auth"
+// ], function () {
 
-    Route::get(
-        '/users/edit/{id}',
-        ['uses' => 'OrderController@edit', 'as' => 'edit']
-    );
+//     Route::get(
+//         '/orders',
+//         ['uses' => 'OrderController@index', 'as' => 'index']
+//     );
 
-    Route::post(
-        '/users/store/',
-        ['uses' => 'OrderController@store', 'as' => 'store']
-    );
+//     Route::get(
+//         '/users/edit/{id}',
+//         ['uses' => 'OrderController@edit', 'as' => 'edit']
+//     );
 
-    Route::PUT(
-        '/users/update/{id}',
-        ['uses' => 'OrderController@update', 'as' => 'update']
-    );
+//     Route::post(
+//         '/users/store/',
+//         ['uses' => 'OrderController@store', 'as' => 'store']
+//     );
 
-    Route::delete(
-        '/users/{id}',
-        ['uses' => 'OrderController@destroy', 'as' => 'destroy']
-    );
+//     Route::PUT(
+//         '/users/update/{id}',
+//         ['uses' => 'OrderController@update', 'as' => 'update']
+//     );
+
+//     Route::delete(
+//         '/users/{id}',
+//         ['uses' => 'OrderController@destroy', 'as' => 'destroy']
+//     );
+// });
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('order', 'OrderController');
 });

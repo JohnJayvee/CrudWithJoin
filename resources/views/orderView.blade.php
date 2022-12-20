@@ -123,7 +123,7 @@
                     <h4 id="UpdateModelHeading" class="modal-title"></h4>
                 </div>
                 <div class="modal-body">
-                    <form id="u_customerForm" class="form-horizontal" name="customerFormEdit">
+                    <form id="u_orderForm" class="form-horizontal" name="customerFormEdit">
                         <input type="hidden" id="u_order_id" name="u_order_id">
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Customer</label>
@@ -187,7 +187,7 @@
                         </div>
 
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" id="updateBtn" class="btn btn-primary">Save changes
+                            <button type="submit" id="u_saveBtn" class="btn btn-primary">Save changes
                             </button>
                         </div>
                     </form>

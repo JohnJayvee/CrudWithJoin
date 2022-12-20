@@ -130,7 +130,7 @@
             $.get(editUrl, function(data) {
                 console.log(data);
                 $('#UpdateModelHeading').html("Edit Order");
-                $('#updateBtn').val("edit-customer");
+                $('#u_saveBtn').val("edit-customer");
                 $('#UpdateAjaxModal').modal('show');
                 $('#u_order_id').val(data.id);
                 $('#u_customer').val(data.customer_id);
@@ -145,13 +145,13 @@
         });
 
         // Edit Save Function
-        $('#u_customerForm').on('submit', function(event) {
+        $('#u_orderForm').on('submit', function(event) {
             event.preventDefault();
             var updateCustomerID = $('#u_order_id').val();
             var updateData = '{{ route('order.update', ':id') }}';
             updateUrl = updateData.replace(':id', updateCustomerID);
             $.ajax({
-                data: $('#u_customerForm').serialize(),
+                data: $('#u_orderForm').serialize(),
                 url: updateUrl,
                 type: "PUT",
                 dataType: 'JSON',
@@ -168,7 +168,7 @@
                         html = '<div class="alert alert-success">' + data.success +
                             '</div>';
                         $('.form-control').removeClass('is-invalid')
-                        $('#u_customerForm')[0].reset();
+                        $('#u_orderForm')[0].reset();
                         $('#UpdateAjaxModal').modal('hide');
                         table.ajax.reload();
                     }

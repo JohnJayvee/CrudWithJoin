@@ -146,10 +146,11 @@ class OrderController extends Controller
 
         if (orderModel::where('id', $id)->exists()) {
             $order = orderModel::find($id);
-            $order->delivery_address = is_null($request->c_delivery_address) ? $order->delivery_address : $request->c_delivery_address;
-            $order->phone_number = is_null($request->c_phone_number) ? $order->phone_number : $request->c_phone_number;
-            $order->package_weight = is_null($request->c_package_weight) ? $order->package_weight : $request->c_package_weight;
-            $order->dimension = is_null($request->c_dimension) ? $order->dimension : $request->c_dimension;
+            $order->customer_id = is_null($request->u_customer) ? $order->customer_id : $request->u_customer;
+            $order->delivery_address = is_null($request->u_delivery_address) ? $order->delivery_address : $request->u_delivery_address;
+            $order->phone_number = is_null($request->u_phone_number) ? $order->phone_number : $request->u_phone_number;
+            $order->package_weight = is_null($request->u_package_weight) ? $order->package_weight : $request->u_package_weight;
+            $order->dimension = is_null($request->u_dimension) ? $order->dimension : $request->u_dimension;
 
 
             $order->save();
