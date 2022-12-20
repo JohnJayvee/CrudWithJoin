@@ -86,14 +86,14 @@ class OrderController extends Controller
         }
 
 
-        if ($customer = new orderModel()) {
-            $customer->customer_id = $request->c_customer;
-            $customer->delivery_address = $request->c_delivery_address;
-            $customer->phone_number = $request->c_phone_number;
-            $customer->package_weight = $request->c_package_weight;
-            $customer->dimension = $request->c_dimension;
+        if ($order = new orderModel()) {
+            $order->customer_id = $request->c_customer;
+            $order->delivery_address = $request->c_delivery_address;
+            $order->phone_number = $request->c_phone_number;
+            $order->package_weight = $request->c_package_weight;
+            $order->dimension = $request->c_dimension;
 
-            $customer->save();
+            $order->save();
 
             return response()->json([
                 "success" => "users record created"
