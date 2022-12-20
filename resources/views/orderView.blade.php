@@ -124,11 +124,11 @@
                 </div>
                 <div class="modal-body">
                     <form id="u_customerForm" class="form-horizontal" name="customerFormEdit">
-                        <input type="hidden" id="u_customer_id" name="customer_id">
+                        <input type="hidden" id="u_customer_id" name="u_customer_id">
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Customer</label>
                             <div class="col-sm-12">
-                                <select id="c_customer" name="c_customer" class="form-select form-control" >
+                                <select id="u_customer" name="u_customer" class="form-select form-control" >
                                     <option selected value="">Select Customer</option>
                                     @foreach ($join as $row)
                                         <option value="{{ $row['id'] }}">
@@ -144,7 +144,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-12 control-label">Delivery Address</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="c_delivery_address" name="c_delivery_address"
+                                <input type="text" class="form-control" id="u_delivery_address" name="u_delivery_address"
                                     placeholder="Enter Title" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-c_delivery_address"></strong>
@@ -155,7 +155,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Phone Number</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="c_phone_number" name="c_phone_number"
+                                <input type="text" class="form-control" id="u_phone_number" name="u_phone_number"
                                     placeholder="Enter Title" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-c_phone_number"></strong>
@@ -167,7 +167,7 @@
                         <div class="form-group">
                             <label class="col-sm-12 control-label">Package Weight</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="c_package_weight" name="c_package_weight"
+                                <input type="text" class="form-control" id="u_package_weight" name="u_package_weight"
                                     placeholder="Enter Title" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-c_package_weight"></strong>
@@ -178,7 +178,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Dimension</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="c_dimension" name="c_dimension"
+                                <input type="text" class="form-control" id="u_dimension" name="u_dimension"
                                     placeholder="Enter Title" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-c_dimension"></strong>

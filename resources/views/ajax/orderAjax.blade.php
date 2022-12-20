@@ -132,11 +132,11 @@
                 $('#UpdateModelHeading').html("Edit Order");
                 $('#updateBtn').val("edit-customer");
                 $('#UpdateAjaxModal').modal('show');
-                $('#u_customer_id').val(data.id);
-                $('#u_name').val(data.name);
-                $('#u_address').val(data.address);
+                $('#u_customer').val(data.id);
+                $('#u_delivery_address').val(data.delivery_address);
                 $('#u_phone_number').val(data.phone_number);
-                $('#u_email').val(data.email);
+                $('#u_package_weight').val(data.package_weight);
+                $('#u_dimension').val(data.dimension);
 
 
 
