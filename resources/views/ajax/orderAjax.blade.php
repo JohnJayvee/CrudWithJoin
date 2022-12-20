@@ -74,18 +74,18 @@
         // Create function
         $('#createNewCustomer').click(function() {
             $('#c_saveBtn').val("create-customer");
-            $('#c_customer_id').val('');
-            $('#c_customerForm').trigger("reset");
+            $('#c_order_id').val('');
+            $('#c_orderForm').trigger("reset");
             $('#c_modelHeading').html("Create New Customer");
             $('#c_ajaxModal').modal('show');
 
         });
 
         // Create Save Function
-        $('#c_customerForm').on('submit', function(event) {
+        $('#c_orderForm').on('submit', function(event) {
             event.preventDefault();
             $.ajax({
-                data: $('#c_customerForm').serialize(),
+                data: $('#c_orderForm').serialize(),
                 url: "{{ route('order.store') }}",
                 type: "POST",
                 dataType: 'JSON',
@@ -102,7 +102,7 @@
                         html = '<div class="alert alert-success">' + data.success +
                             '</div>';
                         $('.form-control').removeClass('is-invalid')
-                        $('#c_customerForm')[0].reset();
+                        $('#c_orderForm')[0].reset();
                         $('#c_ajaxModal').modal('hide');
                         table.ajax.reload();
                     }
@@ -129,7 +129,7 @@
             editUrl = editData.replace(':id', customer_id);
             $.get(editUrl, function(data) {
                 console.log(data);
-                $('#UpdateModelHeading').html("Edit Customer");
+                $('#UpdateModelHeading').html("Edit Order");
                 $('#updateBtn').val("edit-customer");
                 $('#UpdateAjaxModal').modal('show');
                 $('#u_customer_id').val(data.id);
