@@ -193,6 +193,7 @@ Route::group([
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('customer', 'CustomerController');
+    Route::resource('order', 'OrderController');
 });
 
 
@@ -226,7 +227,3 @@ Route::group(['middleware' => 'auth'], function () {
 //         ['uses' => 'OrderController@destroy', 'as' => 'destroy']
 //     );
 // });
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::resource('order', 'OrderController');
-});
