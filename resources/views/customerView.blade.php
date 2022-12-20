@@ -4,8 +4,7 @@
 <head>
     <title>Laravel Trial</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
@@ -51,7 +50,7 @@
                             <label for="name" class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="c_name" name="c_name"
-                                    placeholder="Enter Title" value="" maxlength="50">
+                                    placeholder="Enter Name" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-c_name"></strong>
                                 </span>
@@ -62,7 +61,7 @@
                             <label class="col-sm-2 control-label">Address</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="c_address" name="c_address"
-                                    placeholder="Enter Title" value="" maxlength="50">
+                                    placeholder="Enter Address" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-c_address"></strong>
                                 </span>
@@ -74,7 +73,7 @@
                             <label class="col-sm-12 control-label">Phone Number</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="c_phone_number" name="c_phone_number"
-                                    placeholder="Enter Title" value="" maxlength="50">
+                                    placeholder="Enter Phone Number" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-c_phone_number"></strong>
                                 </span>
@@ -85,7 +84,7 @@
                             <label class="col-sm-2 control-label">Email</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="c_email" name="c_email"
-                                    placeholder="Enter Title" value="" maxlength="50">
+                                    placeholder="Enter Email" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-c_email"></strong>
                                 </span>
@@ -138,8 +137,8 @@
                         <div class="form-group">
                             <label class="col-sm-12 control-label">Phone Number</label>
                             <div class="col-sm-12">
-                                <input type="text" id="u_phone_number" class="form-control address" name="u_phone_number"
-                                    placeholder="Enter Title" value="" maxlength="50">
+                                <input type="text" id="u_phone_number" class="form-control address"
+                                    name="u_phone_number" placeholder="Enter Title" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-u_phone_number"></strong>
                                 </span>
@@ -158,7 +157,8 @@
                         </div>
 
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" id="updateBtn" class="btn btn-primary" value="edit">Save changes
+                            <button type="submit" id="updateBtn" class="btn btn-primary" value="edit">Save
+                                changes
                             </button>
                         </div>
                     </form>

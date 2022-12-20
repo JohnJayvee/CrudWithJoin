@@ -159,15 +159,13 @@ Route::group([
 
 
 
-//*====================================[Routes for Users]====================================//
-
 Route::group([
     'as' => "customer.",
     // 'middleware' => "auth"
 ], function () {
 
     Route::get(
-        '/customer',
+        '/customers',
         ['uses' => 'CustomerController@index', 'as' => 'index']
     );
 
@@ -192,38 +190,33 @@ Route::group([
     );
 });
 
-
-
-
-
 Route::group([
     'as' => "order.",
     // 'middleware' => "auth"
 ], function () {
 
     Route::get(
-        '/order',
+        '/orders',
         ['uses' => 'OrderController@index', 'as' => 'index']
     );
 
     Route::get(
-        '/customer/edit/{id}',
+        '/users/edit/{id}',
         ['uses' => 'OrderController@edit', 'as' => 'edit']
     );
 
     Route::post(
-        '/customer/store/',
+        '/users/store/',
         ['uses' => 'OrderController@store', 'as' => 'store']
     );
 
     Route::PUT(
-        '/customer/update/{id}',
+        '/users/update/{id}',
         ['uses' => 'OrderController@update', 'as' => 'update']
     );
 
     Route::delete(
-        '/customer/{id}',
+        '/users/{id}',
         ['uses' => 'OrderController@destroy', 'as' => 'destroy']
     );
 });
-//!====================================[End of Users]====================================//

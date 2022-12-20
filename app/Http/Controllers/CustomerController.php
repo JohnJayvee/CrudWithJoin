@@ -37,7 +37,7 @@ class CustomerController extends Controller
         if ($request->expectsJson()) {
             return response()->json($customer, 200);
         }
-        return view('orderView', ['users' => $customer]);
+        return view('customerView', ['users' => $customer]);
     }
 
     public function store(Request $request)
@@ -48,7 +48,7 @@ class CustomerController extends Controller
             [
                 'c_name' => 'required|string|max:255',
                 'c_address' => 'required|string|max:255',
-                'c_phone_number' => 'required|string|max:255',
+                'c_phone_number' => 'required|numeric|integer|max:255',
                 'c_email' => 'required|string|max:255|email',
 
             ],
@@ -56,6 +56,7 @@ class CustomerController extends Controller
                 'c_name.required' => 'Name field are required',
                 'c_address.required' => 'Address field are required',
                 'c_phone_number.required' => 'Phone Number field are required',
+                'c_phone_number.numeric' => 'Enter valid phone number',
                 'c_email.required' => 'Phone Number field are required',
                 'c_email.email' => 'Enter valid email address'
 
