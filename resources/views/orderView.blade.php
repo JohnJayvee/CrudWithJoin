@@ -22,10 +22,10 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
+                    <th>Delivery address</th>
+                    <th>phone number</th>
+                    <th>package weight</th>
+                    <th>dimension</th>
 
                     <th width="300px">Action</th>
                 </tr>
