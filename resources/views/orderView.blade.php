@@ -4,8 +4,7 @@
 <head>
     <title>Laravel Trial</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
@@ -14,7 +13,7 @@
     <div class="container">
         <br>
         {{-- <h1>Laravel Trial</h1> --}}
-        <a class="btn btn-success" href="javascript:void(0)" id="createNewCustomer"> Create New Customer</a>
+        <a class="btn btn-success" href="javascript:void(0)" id="createNewCustomer"> Create New Order</a>
         <br><br>
         <span id="success_message"></span>
 
@@ -45,33 +44,35 @@
                 </div>
                 <div class="modal-body">
                     <form id="c_customerForm" name="customerFormCreate" class="form-horizontal">
-                        <input type="hidden" id="c_customer_id" name="customer_id">
-
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Name</label>
+                            <label for="name" class="col-sm-2 control-label">Customer</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="c_name" name="c_name"
-                                    placeholder="Enter Title" value="" maxlength="50">
+                                <select id="c_customer" name="c_customer" class="form-select form-control" >
+                                    <option selected value="">Select Customer</option>
+                                    @foreach ($join as $row)
+                                        <option value="{{ $row['id'] }}">
+                                            {{ $row['name'] }}</option>
+                                    @endforeach
+                                </select>
                                 <span class="invalid-feedback" role="alert">
-                                    <strong id="error-c_name"></strong>
+                                    <strong id="error-c_customer"></strong>
                                 </span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Address</label>
+                            <label for="name" class="col-sm-12 control-label">Delivery Address</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="c_address" name="c_address"
+                                <input type="text" class="form-control" id="c_delivery_address" name="c_delivery_address"
                                     placeholder="Enter Title" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
-                                    <strong id="error-c_address"></strong>
+                                    <strong id="error-c_delivery_address"></strong>
                                 </span>
                             </div>
                         </div>
 
-
                         <div class="form-group">
-                            <label class="col-sm-12 control-label">Phone Number</label>
+                            <label class="col-sm-2 control-label">Phone Number</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="c_phone_number" name="c_phone_number"
                                     placeholder="Enter Title" value="" maxlength="50">
@@ -81,13 +82,25 @@
                             </div>
                         </div>
 
+
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Email</label>
+                            <label class="col-sm-12 control-label">Package Weight</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="c_email" name="c_email"
+                                <input type="text" class="form-control" id="c_package_weight" name="c_package_weight"
                                     placeholder="Enter Title" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
-                                    <strong id="error-c_email"></strong>
+                                    <strong id="error-c_package_weight"></strong>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Dimension</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="c_dimension" name="c_dimension"
+                                    placeholder="Enter Title" value="" maxlength="50">
+                                <span class="invalid-feedback" role="alert">
+                                    <strong id="error-c_dimension"></strong>
                                 </span>
                             </div>
                         </div>
@@ -138,8 +151,8 @@
                         <div class="form-group">
                             <label class="col-sm-12 control-label">Phone Number</label>
                             <div class="col-sm-12">
-                                <input type="text" id="u_phone_number" class="form-control address" name="u_phone_number"
-                                    placeholder="Enter Title" value="" maxlength="50">
+                                <input type="text" id="u_phone_number" class="form-control address"
+                                    name="u_phone_number" placeholder="Enter Title" value="" maxlength="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-u_phone_number"></strong>
                                 </span>
@@ -158,7 +171,8 @@
                         </div>
 
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" id="updateBtn" class="btn btn-primary" value="edit">Save changes
+                            <button type="submit" id="updateBtn" class="btn btn-primary" value="edit">Save
+                                changes
                             </button>
                         </div>
                     </form>

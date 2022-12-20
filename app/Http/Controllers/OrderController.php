@@ -37,7 +37,13 @@ class OrderController extends Controller
         if ($request->expectsJson()) {
             return response()->json($customer, 200);
         }
-        return view('orderView', ['users' => $customer]);
+
+        $join = DB::table('order')
+            ->select('customer.*')
+            ->rightJoin('customer', 'order.id', '=', 'customer.order_id')
+                // ->where('customer.id', '=','*')
+            ->get();
+        return view('orderView', ['users' => $customer])->with('join', json_decode($join, true));
 
 
 
@@ -57,18 +63,19 @@ class OrderController extends Controller
         $errors = Validator::make(
             $request->all(),
             [
-                'c_name' => 'required|string|max:255',
-                'c_address' => 'required|string|max:255',
+                'c_customer' => 'required',
+                'c_delivery_address' => 'required|string|max:255',
                 'c_phone_number' => 'required|string|max:255',
-                'c_email' => 'required|string|max:255|email',
+                'c_package_weight' => 'required|string|max:255',
+                'c_dimension' => 'required|string|max:255',
 
             ],
             [
-                'c_name.required' => 'Name field are required',
-                'c_address.required' => 'Address field are required',
-                'c_phone_number.required' => 'Phone Number field are required',
-                'c_email.required' => 'Phone Number field are required',
-                'c_email.email' => 'Enter valid email address'
+                // 'c_name.required' => 'Name field are required',
+                // 'c_address.required' => 'Address field are required',
+                // 'c_phone_number.required' => 'Phone Number field are required',
+                // 'c_email.required' => 'Phone Number field are required',
+                // 'c_email.email' => 'Enter valid email address'
 
 
             ]
@@ -80,10 +87,11 @@ class OrderController extends Controller
 
 
         if ($customer = new orderModel()) {
-            $customer->name = $request->c_name;
-            $customer->address = $request->c_address;
+            $customer->customer_id = $request->c_customer;
+            $customer->delivery_address = $request->c_delivery_address;
             $customer->phone_number = $request->c_phone_number;
-            $customer->email = $request->c_email;
+            $customer->package_weight = $request->c_package_weight;
+            $customer->dimension = $request->c_dimension;
 
             $customer->save();
 
