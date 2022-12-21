@@ -22,12 +22,9 @@ class OrderController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
 
-                    $btn = '
-                                <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editCustomer">Edit</a>
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editCustomer">Edit</a>
 
-
-                                <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteOrder">Delete</a>
-                            ';
+                                <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteOrder">Delete</a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])
@@ -41,18 +38,9 @@ class OrderController extends Controller
         $join = DB::table('order')
             ->select('customer.*')
             ->rightJoin('customer', 'order.id', '=', 'customer.order_id')
-                // ->where('customer.id', '=','*')
             ->get();
         return view('orderView', ['users' => $customer])->with('join', json_decode($join, true));
 
-
-
-        // $users = DB::table('order')
-        //     ->select('customer.id')
-        //     ->rightJoin('customer', 'order.id', '=', 'customer.order_id')
-        //     // ->where('customer.id', '=','*')
-        //     ->get();
-        // return response()->json($users, 200);
 
 
     }
@@ -146,13 +134,16 @@ class OrderController extends Controller
 
         if (orderModel::where('id', $id)->exists()) {
             $order = orderModel::find($id);
-            $order->customer_id = is_null($request->u_customer) ? $order->customer_id : $request->u_customer;
-            $order->delivery_address = is_null($request->u_delivery_address) ? $order->delivery_address : $request->u_delivery_address;
-            $order->phone_number = is_null($request->u_phone_number) ? $order->phone_number : $request->u_phone_number;
-            $order->package_weight = is_null($request->u_package_weight) ? $order->package_weight : $request->u_package_weight;
-            $order->dimension = is_null($request->u_dimension) ? $order->dimension : $request->u_dimension;
-
-
+            // $order->customer_id = is_null($request->u_customer) ? $order->customer_id : $request->u_customer;
+            // $order->delivery_address = is_null($request->u_delivery_address) ? $order->delivery_address : $request->u_delivery_address;
+            // $order->phone_number = is_null($request->u_phone_number) ? $order->phone_number : $request->u_phone_number;
+            // $order->package_weight = is_null($request->u_package_weight) ? $order->package_weight : $request->u_package_weight;
+            // $order->dimension = is_null($request->u_dimension) ? $order->dimension : $request->u_dimension;
+            $order->customer_id = $request->input('u_customer');
+            $order->delivery_address = $request->input('u_delivery_address');
+            $order->phone_number = $request->input('u_cphone_number');
+            $order->package_weight = $request->input('u_package_weight');
+            $order->dimension = $request->input('u_dimension');
             $order->save();
 
             return response()->json([

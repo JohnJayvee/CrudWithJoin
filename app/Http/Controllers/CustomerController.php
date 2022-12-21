@@ -12,9 +12,7 @@ class CustomerController extends Controller
 
     public function index(Request $request)
     {
-        // $json = DB::table('customer')->get()->tojson();
         $customer = customerModel::get();
-        // return response($customer, 200);
 
         if ($request->ajax()) {
             $data = $customer;
@@ -70,7 +68,7 @@ class CustomerController extends Controller
 
 
         if ($customer = new customerModel()) {
-            $customer->name= $request->c_name;
+            $customer->name = $request->c_name;
             $customer->address = $request->c_address;
             $customer->phone_number = $request->c_phone_number;
             $customer->email = $request->c_email;
@@ -127,10 +125,14 @@ class CustomerController extends Controller
 
         if (customerModel::where('id', $id)->exists()) {
             $customer = customerModel::find($id);
-            $customer->name = is_null($request->u_name) ? $customer->name : $request->u_name;
-            $customer->address = is_null($request->u_address) ? $customer->address : $request->u_address;
-            $customer->phone_number = is_null($request->u_phone_number) ? $customer->phone_number : $request->u_phone_number;
-            $customer->email = is_null($request->u_email) ? $customer->email : $request->u_email;
+            // $customer->name = is_null($request->u_name) ? $customer->name : $request->u_name;
+            // $customer->address = is_null($request->u_address) ? $customer->address : $request->u_address;
+            // $customer->phone_number = is_null($request->u_phone_number) ? $customer->phone_number : $request->u_phone_number;
+            // $customer->email = is_null($request->u_email) ? $customer->email : $request->u_email;
+            $customer->name = $request->input('u_name');
+            $customer->address = $request->input('u_address');
+            $customer->phone_number = $request->input('u_phone_number');
+            $customer->email = $request->input('u_email');
 
 
             $customer->save();

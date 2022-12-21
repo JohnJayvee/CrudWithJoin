@@ -13,17 +13,17 @@ class CreateOrderTable extends Migration
      */
     public function up()
     {
-        Schema::create('order', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('customer_id')->unsigned();
-            $table->string('delivery_address')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->string('package_weight')->nullable();
-            $table->string('dimension')->nullable();
+            $table->string('delivery_address');
+            $table->string('phone_number');
+            $table->string('package_weight');
+            $table->string('dimension');
             $table->timestamps();
             $table->foreign('customer_id')
                 ->references('id')
-                ->on('customer')
+                ->on('customers')
                 ->onCascade('delete');
         });
     }
